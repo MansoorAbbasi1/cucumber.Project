@@ -71,6 +71,7 @@ public class US008 {
     public void kullaniciNewPasswordConfirmationTextboxiniTemizler() {
         ReusableMethods.waitFor(2);
         medunnaPages.newConfirmPasswordKutusu.clear();
+
     }
 
     @Given("New password confirmation textboxina new password'den farkli bir sifre yazar")
