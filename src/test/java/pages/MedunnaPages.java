@@ -1,9 +1,12 @@
 package pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
+
+import java.util.List;
 
 public class MedunnaPages {
     public MedunnaPages() {
@@ -119,6 +122,82 @@ public class MedunnaPages {
 
     @FindBy(xpath = "(//li[@class='point'])[5]")
     public WebElement passwordStrength5;
+
+
+    //------------- US009------------//
+
+    @FindBy (xpath = "//*[@class='svg-inline--fa fa-search fa-w-16 fa-fw ']")
+    public WebElement searchPatientButton;
+
+    @FindBy (xpath = "//*[@class='form-control']")
+    public WebElement patientSearchBox;
+
+    @FindBy (xpath = "(//*[@class='btn btn-info btn-sm'])[1]")
+    public WebElement viewButton;
+
+    @FindBy (xpath = "//h2")
+    public WebElement hastaBilgilerSayfasi;
+
+    @FindBy (xpath = "(//*[@class='btn btn-primary btn-sm'])[1]")
+    public WebElement editButton;
+
+
+    @FindBy (xpath = "//*[@id='patient-id']")
+    public WebElement EditPatientId;
+
+    @FindBy (xpath = "//*[@id='patient-firstName']")
+    public WebElement editPatientFirstName;
+
+    @FindBy (xpath = "//*[@id='patient-lastName']")
+    public WebElement editPatientLastName;
+
+    @FindBy (xpath = "//*[@id='patient-birthDate']")
+    public WebElement editPatientBirthDate;
+
+    @FindBy (xpath = "//*[@id='email']")
+    public WebElement editPatientEmail;
+
+    @FindBy (xpath = "//*[@id='patient-phone']")
+    public WebElement editPatientPhone;
+
+    @FindBy (xpath = "//*[@id='patient-gender']")
+    public WebElement editPatientGender;
+
+    @FindBy (xpath = "//*[@id='patient-bloodGroup']")
+    public WebElement editPatientBloodGroup;
+
+    @FindBy (xpath = "//*[@id='patient-adress']")
+    public WebElement editPatientAdress;
+
+    @FindBy (xpath = "//*[@id='patient-description']")
+    public WebElement editPatientDescription;
+
+    @FindBy (xpath = "//*[@id='patient-user']")
+    public WebElement editPatientUser;
+
+    @FindBy (xpath = "//*[@id='patient-country']")
+    public WebElement editPatientCountry;
+
+    @FindBy (xpath = "//*[@id='patient-cstate']")
+    public WebElement editPatientCstate;
+
+
+    @FindBy (xpath = "//*[text()='Save']")  //*[@id='save-entity']
+    public WebElement editSaveButton;
+
+
+    @FindBy (xpath = "//*[text()='A Patient is updated with identifier 4864']")
+    public WebElement editSaveBasariliText;
+
+    @FindBy (xpath = "//tr[1]//td[2]")
+    public WebElement ssnElement;
+
+    @FindBy (xpath = "//tr//td[2]")
+    public List<WebElement> ssnElements;
+
+    @FindBy (xpath = "//tbody//tr")
+    public List<WebElement> tumKayitBilgileri;
+
 
 
 
