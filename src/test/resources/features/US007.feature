@@ -36,12 +36,11 @@ Scenario Outline: TC01 Kullanıcı gecerli tarih girmelidir. (guncel tarihi veya
     |20-11-2022  |
 
   @1
- Scenario Outline: TC02 Tarih sirasi gun/ay/yil (ay/gun/yil) seklinde olmalidir.
-    Then Tarih sirasini "<gun-ay-yil>" seklinde oldugu test edilir
-    And sayfayi kapatir
-    Examples:
-      | gun-ay-yil |
-      | 18-12-2022 |
+
+  Scenario:  TC02 Tarih sirasi gun/ay/yil (ay/gun/yil) seklinde olmalidir.
+    Then Tarih sirasini gun-ay-yil seklinde oldugu test edilir
+    And  sayfayi kapatir
+
 
 
 

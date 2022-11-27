@@ -13,6 +13,8 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 public class US007 {
@@ -151,6 +153,7 @@ public class US007 {
 
     }
 
+
     */
 
 
@@ -168,11 +171,124 @@ public class US007 {
         Driver.closeDriver();
     }
 
+    @Then("Tarih sirasini gun-ay-yil seklinde oldugu test edilir")
+    public void tarihSirasiniGunAyYilSeklindeOlduguTestEdilir() {
 
-    @Then("Tarih sirasini {string} seklinde oldugu test edilir")
-    public void tarihSirasiniSeklindeOlduguTestEdilir(String tarih) {
-        medunnaPages.patientTarih.sendKeys(tarih);
+        String actualtarih = medunnaPages.appointmentDateTime.getAttribute("value").toString();
+        System.out.println("actualtarih = " + actualtarih);
+
+        List<String> actualtarihSplit= Arrays.stream(actualtarih.split("-")).toList();
+        System.out.println("actualtarihSplit = " + actualtarihSplit);
+
+        Assert.assertTrue((int)Integer.parseInt(actualtarihSplit.get(0))>2021);
+        Assert.assertEquals(4,actualtarihSplit.get(0).length());
+
+        List<Object> medunnaTarihManipulate= new ArrayList<>();
+        medunnaTarihManipulate.add((int)Integer.parseInt(actualtarihSplit.get(2)));
+        medunnaTarihManipulate.add((int)Integer.parseInt(actualtarihSplit.get(1)));
+        medunnaTarihManipulate.add((int)Integer.parseInt(actualtarihSplit.get(0)));
+        System.out.println("medunnaTarihManipulate = " + medunnaTarihManipulate);
+
+        String dateNow = new SimpleDateFormat("dd, MM, yyyy").format(new Date());
+        System.out.println("dateNow = " + dateNow);
+
+        List<String> actualManipulate =Arrays.stream(dateNow.split("-")).toList();
+        System.out.println("actualManipulate = " + actualManipulate);
+
+        List<Object> actualManipulateDate= new ArrayList<>();
+        actualManipulateDate.add(actualManipulate.get(0));
+
+        System.out.println("actualManipulateDate = " + actualManipulateDate);
+
+        Assert.assertEquals(medunnaTarihManipulate.toString(),actualManipulateDate.toString());
+
+
+
+        //actualManipulateDate.add((int)Integer.parseInt(actualManipulate.get(0)));
+        //actualManipulateDate.add((int)Integer.parseInt(actualManipulate.get(1)));
+        //actualManipulateDate.add((int)Integer.parseInt(actualManipulate.get(2)));
+
+        //List<Object> actualManipulateDate1= Collections.singletonList(Arrays.stream(dateNow.split("-")).toList());
+
+        //System.out.println("actualManipulateDate = " + actualManipulateDate);
+
+
+
+
+
+        /* medunnaPages.patientTarih.sendKeys(tarih);
         ReusableMethods.waitFor(3);
         Assert.assertTrue(medunnaPages.patientTarih.isDisplayed());
+
+        */
+
+
+
+        //Assert.assertTrue((int)Integer.parseInt(actualtarihSplit.get(2))<31);
+        //Assert.assertTrue((int)Integer.parseInt(actualtarihSplit.get(1))<13);
+
+
+        /*
+
+
+
+        List<Integer> actualManipulateDate= new ArrayList<>();
+        actualManipulateDate.add((int)Integer.parseInt(actualManipulate.get(0)));
+        actualManipulateDate.add((int)Integer.parseInt(actualManipulate.get(1)));
+        actualManipulateDate.add((int)Integer.parseInt(actualManipulate.get(2)));
+
+        List<String> actualManipulateDate= new ArrayList<>();
+        actualManipulateDate.add(actualManipulate.get(0));
+        //actualManipulateDate.add(actualManipulate.get(1));
+        //actualManipulateDate.add(actualManipulate.get(2));
+
+        List<String> medunnaTarihManipulate=new ArrayList<>();
+        medunnaTarihManipulate.add(actualtarihSplit.get(2));
+        medunnaTarihManipulate.add(actualtarihSplit.get(1));
+        medunnaTarihManipulate.add(actualtarihSplit.get(0));
+        System.out.println("medunnaTarihManipulate = " + medunnaTarihManipulate);
+
+
+
+
+         */
+
+
+        //List<Integer> actualManipulateDate= new ArrayList<>();
+        //actualManipulateDate.add((int)Integer.parseInt(actualManipulate.get(0)));
+        //actualManipulateDate.add((int)Integer.parseInt(actualManipulate.get(1)));
+        //actualManipulateDate.add((int)Integer.parseInt(actualManipulate.get(2)));
+
+        //System.out.println("actualManipulateDate = " + actualManipulateDate);
+
+
+
+        // System.out.println("medunnaTarihManipulate = " + medunnaTarihManipulate);
+
+/*
+        actualManipulateDate.add((int)Integer.parseInt(String.valueOf(actualManipulate.indexOf(0))));
+        actualManipulateDate.add((int)Integer.parseInt(String.valueOf(actualManipulate.indexOf(1))));
+        actualManipulateDate.add((int)Integer.parseInt(String.valueOf(actualManipulate.indexOf(2))));
+        List<String> actualManipulateDate= new ArrayList<>();
+        actualManipulateDate.add(actualManipulate.get(0));
+        actualManipulateDate.add(actualManipulate.get(1));
+        actualManipulateDate.add(actualManipulate.get(2));
+
+
+ */
+
+        //System.out.println("medunna.date.getText() = " + medunnaPages.appointmentDateTime.getText());
+
+        // String expected=dateNow;
+        //String actual= medunnaPages.appointmentDateTime.getText();
+
+
+
+        //Assert.assertEquals(expected,actual);
+
+
     }
+
+
+
 }

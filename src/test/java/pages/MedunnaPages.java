@@ -87,6 +87,9 @@ public class MedunnaPages {
     @FindBy (xpath = "//*[text()='Appointment date can not be past date!']")
     public WebElement gecmisTarihUyarisi;
 
+    @FindBy (xpath = "//*[@value='2022-11-27']")
+    public WebElement appointmentDateTime;
+
 
     //------------- US008------------//
 
